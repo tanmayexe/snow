@@ -13,9 +13,9 @@ export default function Navbar() {
   const links = [
     { label: 'Home', href: '#home' },
     { label: 'PDI Portfolio', href: '#pdi' },
-    { label: 'Skills', href: '#skills' },
+    { label: 'Architecture', href: '#architecture' },
+    { label: 'Code Quality', href: '#code-quality' },
     { label: 'Experience', href: '#experience' },
-    { label: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -27,7 +27,6 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-[1200px] mx-auto px-6 h-14 flex items-center justify-between">
-        {/* Logo / Brand */}
         <a href="#home" className="flex items-center gap-2.5">
           <div className="w-7 h-7 rounded bg-[#007b58] flex items-center justify-center">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -41,7 +40,6 @@ export default function Navbar() {
           </span>
         </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1">
           {links.map((link) => (
             <a
@@ -54,7 +52,6 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden p-2 rounded-md hover:bg-[#f4f5f7] text-[#4b5563]"
@@ -77,7 +74,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-[#e5e7eb] px-6 py-3 space-y-1">
           {links.map((link) => (

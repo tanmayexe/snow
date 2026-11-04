@@ -1,9 +1,9 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PDIShowcase from './components/PDIShowcase';
-import TechnicalSkills from './components/TechnicalSkills';
+import UnderTheHood from './components/UnderTheHood';
+import CodeQuality from './components/CodeQuality';
 import Experience from './components/Experience';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
@@ -12,9 +12,9 @@ function App() {
       <Navbar />
       <Hero />
       <PDIShowcase />
-      <TechnicalSkills />
+      <UnderTheHood />
+      <CodeQuality />
       <Experience />
-      <Contact />
       <Footer />
     </div>
   );
