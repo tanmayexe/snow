@@ -1,80 +1,36 @@
-interface FooterProps {
-  darkMode: boolean;
-}
-
-export default function Footer({ darkMode }: FooterProps) {
+export default function Footer() {
   return (
-    <footer className={`py-12 border-t ${darkMode ? 'border-gray-800 bg-gray-950' : 'border-gray-200 bg-white'}`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+    <footer className="py-8 border-t border-[#e5e7eb] bg-white">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Brand */}
-          <div>
-            <a href="#home" className="text-2xl font-bold bg-gradient-to-r from-violet-500 to-cyan-500 bg-clip-text text-transparent">
-              Portfolio
-            </a>
-            <p className={`mt-3 text-sm leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-              Building beautiful, functional web experiences with modern technologies. Let's create something amazing together.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className={`font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Quick Links</h4>
-            <ul className="space-y-2">
-              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className={`text-sm transition-colors hover:text-violet-500 ${
-                      darkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Connect */}
-          <div>
-            <h4 className={`font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Connect</h4>
-            <div className="flex gap-3">
-              {[
-                { icon: 'fab fa-github', label: 'GitHub' },
-                { icon: 'fab fa-linkedin-in', label: 'LinkedIn' },
-                { icon: 'fab fa-twitter', label: 'Twitter' },
-                { icon: 'fab fa-dribbble', label: 'Dribbble' },
-              ].map((social) => (
-                <a
-                  key={social.label}
-                  href="#"
-                  aria-label={social.label}
-                  className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${
-                    darkMode 
-                      ? 'bg-gray-800 text-gray-400 hover:bg-violet-600 hover:text-white' 
-                      : 'bg-gray-100 text-gray-600 hover:bg-violet-500 hover:text-white'
-                  }`}
-                >
-                  <i className={`${social.icon} text-sm`}></i>
-                </a>
-              ))}
+          <div className="flex items-center gap-2.5">
+            <div className="w-6 h-6 rounded bg-[#007b58] flex items-center justify-center">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
             </div>
-            <p className={`mt-4 text-sm ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-              hello@johndoe.com
-            </p>
+            <span className="text-sm font-semibold text-[#1f2937]">Tanmay Kumar Das</span>
           </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className={`pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4 ${
-          darkMode ? 'border-gray-800' : 'border-gray-200'
-        }`}>
-          <p className={`text-sm ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-            © {new Date().getFullYear()} John Doe. All rights reserved.
-          </p>
-          <p className={`text-sm ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-            Made with <span className="text-red-500">❤</span> and lots of coffee
+          {/* Links */}
+          <nav className="flex items-center gap-5">
+            {['Home', 'PDI Portfolio', 'Skills', 'Experience', 'Contact'].map((link) => (
+              <a
+                key={link}
+                href={`#${link.toLowerCase().replace(' ', '-')}`}
+                className="text-[12px] text-[#6b7280] hover:text-[#007b58] transition-colors duration-150"
+              >
+                {link}
+              </a>
+            ))}
+          </nav>
+
+          {/* Copyright */}
+          <p className="text-[12px] text-[#9ca3af]">
+            © {new Date().getFullYear()} Tanmay Kumar Das. Built on ServiceNow PDI.
           </p>
         </div>
       </div>

@@ -1,145 +1,123 @@
-import { useEffect, useState } from 'react';
-
-interface HeroProps {
-  darkMode: boolean;
-}
-
-export default function Hero({ darkMode }: HeroProps) {
-  const [typedText, setTypedText] = useState('');
-  const fullText = 'Full Stack Developer';
-  const [showCursor, setShowCursor] = useState(true);
-
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      setTypedText(fullText.slice(0, index + 1));
-      index++;
-      if (index >= fullText.length) {
-        clearInterval(interval);
-      }
-    }, 80);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
-    }, 530);
-    return () => clearInterval(cursorInterval);
-  }, []);
+export default function Hero() {
+  const badges = [
+    'ServiceNow Fundamentals',
+    'Vyntra Pro Innovations Intern',
+    'PDI Builder',
+  ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className={`absolute top-1/4 left-1/4 w-72 h-72 rounded-full blur-3xl opacity-20 animate-pulse ${
-          darkMode ? 'bg-violet-600' : 'bg-violet-300'
-        }`} />
-        <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-20 animate-pulse ${
-          darkMode ? 'bg-cyan-600' : 'bg-cyan-300'
-        }`} style={{ animationDelay: '1s' }} />
-        <div className={`absolute top-1/2 left-1/2 w-64 h-64 rounded-full blur-3xl opacity-10 animate-pulse ${
-          darkMode ? 'bg-pink-600' : 'bg-pink-300'
-        }`} style={{ animationDelay: '2s' }} />
-      </div>
+    <section id="home" className="pt-14">
+      {/* Subtle geometric background */}
+      <div className="relative overflow-hidden bg-[#f8faf9]">
+        {/* Grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0,123,88,0.06) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0,123,88,0.06) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px',
+          }}
+        />
+        {/* Gradient accent */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#007b58]/[0.04] to-transparent rounded-full -translate-y-1/2 translate-x-1/4" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gradient-to-tr from-[#005689]/[0.03] to-transparent rounded-full translate-y-1/2 -translate-x-1/4" />
 
-      {/* Grid Pattern */}
-      <div className={`absolute inset-0 opacity-[0.03] ${darkMode ? 'opacity-[0.05]' : 'opacity-[0.03]'}`}
-        style={{
-          backgroundImage: `linear-gradient(${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px), linear-gradient(90deg, ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }}
-      />
+        <div className="relative max-w-[1200px] mx-auto px-6 py-16 md:py-24">
+          <div className="max-w-[680px]">
+            {/* Status indicator */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#e8f5f0] border border-[#007b58]/10 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#007b58] animate-pulse" />
+              <span className="text-xs font-medium text-[#007b58]">Available for opportunities</span>
+            </div>
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Avatar */}
-        <div className="mb-8 inline-block">
-          <div className={`w-32 h-32 rounded-full p-1 bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-500`}>
-            <div className={`w-full h-full rounded-full flex items-center justify-center text-5xl ${
-              darkMode ? 'bg-gray-900' : 'bg-white'
-            }`}>
-              👨‍💻
+            {/* Name */}
+            <h1 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-[#1f2937] leading-tight tracking-tight mb-3">
+              Tanmay Kumar Das
+            </h1>
+
+            {/* Title */}
+            <p className="text-lg md:text-xl font-semibold text-[#007b58] mb-4">
+              ServiceNow Developer & Platform Engineer
+            </p>
+
+            {/* Subtitle */}
+            <p className="text-[15px] md:text-base text-[#4b5563] leading-relaxed mb-8 max-w-[560px]">
+              Building scalable scoped applications, automating ITSM workflows, and enforcing enterprise security on the ServiceNow platform.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center gap-3 mb-8">
+              <a
+                href="#pdi"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#007b58] text-white text-sm font-medium hover:bg-[#006649] shadow-[0_1px_2px_rgba(0,123,88,0.2)] transition-all duration-150"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                  <path d="M8 21h8" />
+                  <path d="M12 17v4" />
+                </svg>
+                View PDI Portfolio
+              </a>
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-[#d1d5db] text-[#1f2937] text-sm font-medium hover:bg-[#f4f5f7] hover:border-[#9ca3af] transition-all duration-150"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download Resume
+              </a>
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md text-[#4b5563] text-sm font-medium hover:text-[#1f2937] hover:bg-[#f4f5f7] transition-all duration-150"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                GitHub
+              </a>
+            </div>
+
+            {/* Badges */}
+            <div className="flex flex-wrap gap-2">
+              {badges.map((badge) => (
+                <span
+                  key={badge}
+                  className="inline-flex items-center px-3 py-1 rounded-md bg-[#f4f5f7] border border-[#e5e7eb] text-xs font-medium text-[#4b5563]"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Right side - Stats card (visible on md+) */}
+          <div className="hidden lg:block absolute right-6 top-1/2 -translate-y-1/2">
+            <div className="bg-white rounded-lg border border-[#e5e7eb] shadow-[0_1px_3px_rgba(0,0,0,0.06)] p-5 w-[280px]">
+              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#e5e7eb]">
+                <div className="w-2 h-2 rounded-full bg-[#007b58]" />
+                <span className="text-xs font-semibold text-[#1f2937] uppercase tracking-wide">Platform Stats</span>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { label: 'Scoped Apps Built', value: '3+' },
+                  { label: 'ACLs Engineered', value: '25+' },
+                  { label: 'Custom Tables', value: '12+' },
+                  { label: 'Business Rules', value: '40+' },
+                ].map((stat) => (
+                  <div key={stat.label} className="flex items-center justify-between">
+                    <span className="text-[13px] text-[#6b7280]">{stat.label}</span>
+                    <span className="text-sm font-semibold text-[#007b58]">{stat.value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Greeting */}
-        <p className={`text-lg mb-4 font-medium ${darkMode ? 'text-violet-400' : 'text-violet-600'}`}>
-          Hello, I'm
-        </p>
-
-        {/* Name */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
-          <span className="bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
-            John Doe
-          </span>
-        </h1>
-
-        {/* Typing Effect */}
-        <div className="text-xl sm:text-2xl md:text-3xl mb-8 h-10">
-          <span className={darkMode ? 'text-gray-300' : 'text-gray-700'}>
-            {typedText}
-          </span>
-          <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} text-violet-500 transition-opacity duration-100`}>
-            |
-          </span>
-        </div>
-
-        {/* Description */}
-        <p className={`text-lg max-w-2xl mx-auto mb-10 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-          I craft beautiful, performant web experiences with modern technologies.
-          Passionate about clean code, great design, and user-centric solutions.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#projects"
-            className="px-8 py-3 rounded-full bg-gradient-to-r from-violet-600 to-cyan-600 text-white font-medium hover:shadow-lg hover:shadow-violet-500/25 transition-all duration-300 hover:-translate-y-0.5"
-          >
-            View My Work
-          </a>
-          <a
-            href="#contact"
-            className={`px-8 py-3 rounded-full border-2 font-medium transition-all duration-300 hover:-translate-y-0.5 ${
-              darkMode 
-                ? 'border-gray-700 text-gray-300 hover:border-violet-500 hover:text-violet-400' 
-                : 'border-gray-300 text-gray-700 hover:border-violet-500 hover:text-violet-600'
-            }`}
-          >
-            Get In Touch
-          </a>
-        </div>
-
-        {/* Social Links */}
-        <div className="mt-12 flex items-center justify-center space-x-6">
-          {[
-            { icon: 'fab fa-github', href: '#', label: 'GitHub' },
-            { icon: 'fab fa-linkedin-in', href: '#', label: 'LinkedIn' },
-            { icon: 'fab fa-twitter', href: '#', label: 'Twitter' },
-            { icon: 'fab fa-dribbble', href: '#', label: 'Dribbble' },
-          ].map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
-              aria-label={social.label}
-              className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${
-                darkMode 
-                  ? 'bg-gray-800 text-gray-400 hover:bg-violet-600 hover:text-white' 
-                  : 'bg-gray-100 text-gray-600 hover:bg-violet-500 hover:text-white'
-              }`}
-            >
-              <i className={`${social.icon} text-lg`}></i>
-            </a>
-          ))}
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg className={`w-6 h-6 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
       </div>
     </section>
   );
